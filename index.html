@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A slimy Slug Web Ring">
+    <title>Slug Web Ring</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#9EE255',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+        
+        @import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
+        
+        .header-image {
+            max-width: 150px;
+            /* No animation needed since the GIF is already animated */
+        }
+        
+        /* Background layer with parallax effect */
+        body::after {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("https://i.imgur.com/Cx7lEt9.png");
+            background-size: cover;
+            background-position: center top;
+            background-repeat: no-repeat;
+            opacity: 0.5;
+            z-index: -1;
+            animation: parallaxMove 60s ease-in-out infinite alternate;
+        }
+        
+        @keyframes parallaxMove {
+            0% { transform: translateY(0) scale(1.05); }
+            100% { transform: translateY(-20px) scale(1.1); }
+        }
+        
+        body {
+            font-family: 'VT323', monospace;
+            background-color: transparent;
+            position: relative;
+            overflow-x: hidden;
+        }
+        
+        .blink {
+            animation: blink 1s step-end infinite;
+        }
+        
+        .text-shadow {
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+        }
+        
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+        
+        .pixel-border {
+            box-shadow: 
+                0 0 0 2px #000,
+                0 0 0 4px #9EE255,
+                0 0 0 6px #000;
+        }
+        
+        .marquee {
+            white-space: nowrap;
+            overflow: hidden;
+            box-sizing: border-box;
+        }
+        
+        .marquee-content {
+            display: inline-block;
+            animation: marquee 15s linear infinite;
+        }
+        
+        @keyframes marquee {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+        
+        .scanline {
+            background: linear-gradient(
+                to bottom,
+                rgba(255, 255, 255, 0),
+                rgba(255, 255, 255, 0) 50%,
+                rgba(0, 0, 0, 0.2) 50%,
+                rgba(0, 0, 0, 0.2)
+            );
+            background-size: 100% 4px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body class="text-green-900 min-h-screen">
+    <!-- Header -->
+    <header class="bg-green-100 bg-opacity-80 border-b-4 border-primary py-4 relative">
+        <div class="scanline"></div>
+        <div class="container mx-auto px-4">
+            <div class="flex justify-center items-center mb-2">
+                <img src="https://i.imgur.com/1eYWmo4.gif" alt="Dancing Slug" class="header-image mr-4" />
+                <h1 class="text-5xl text-center text-primary font-bold">
+                    
+                    Slug Webring 
+                    
+                </h1>
+                <img src="https://i.imgur.com/1eYWmo4.gif" alt="Dancing Slug" class="header-image ml-4" />
+            </div>
+            <div class="marquee bg-primary bg-opacity-60 text-black p-1 mt-4 rounded-full" role="marquee">
+                <div class="marquee-content text-xl">
+                    Welcome to the slimiest webring on the internet! Join us for a slimy journey
+                </div>
+            </div>
+            
+            <!-- Horizontal navigation items -->
+            <div class="flex justify-center items-center mt-4 space-x-8">
+                <a href="https://solslugs.com/" target="_blank" rel="noopener" id="header-item-1" class="bg-primary bg-opacity-80 text-black px-4 py-2 rounded-lg shadow-md hover:bg-opacity-100 transition cursor-pointer flex items-center">
+                    <img src="https://i.imgur.com/UI2wRoe.gif" alt="Sol Slugs" class="mr-2" style="height: 24px; width: auto;"/>
+                    <span>Sol Slugs</span>
+                </a>
+                <a href="https://sol-incinerator.com/" target="_blank" rel="noopener" id="header-item-2" class="bg-primary bg-opacity-80 text-black px-4 py-2 rounded-lg shadow-md hover:bg-opacity-100 transition cursor-pointer flex items-center">
+                    <img src="https://i.imgur.com/1GtYl41.gif" alt="INCINERATOR" class="mr-2" style="height: 24px; width: auto;"/>
+                    <span>INCINERATOR</span>
+                </a>
+                <a href="https://discord.com/invite/solslugs" target="_blank" rel="noopener" id="header-item-3" class="bg-primary bg-opacity-80 text-black px-4 py-2 rounded-lg shadow-md hover:bg-opacity-100 transition cursor-pointer flex items-center">
+                    <img src="https://i.imgur.com/UI2wRoe.gif" alt="Slugs Discord" class="mr-2" style="height: 24px; width: auto;"/>
+                    <span>Slugs Discord</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <!-- Webring Navigation -->
+        <nav aria-label="Webring Navigation" class="bg-green-50 bg-opacity-90 border-2 border-primary p-4 mb-8 pixel-border max-w-3xl mx-auto rounded-xl shadow-lg">
+            <div class="flex flex-wrap justify-center items-center gap-4 text-xl">
+                <a href="#" id="prev-link" class="bg-primary text-black px-4 py-2 hover:bg-white transition rounded-full shadow flex items-center">
+                    <img src="https://i.imgur.com/BSvN1oL.png" alt="Previous" class="mr-2" style="height: 30px; width: auto;"/> Previous
+                </a>
+                
+                <a href="#" id="random-link" class="bg-primary text-black px-4 py-2 hover:bg-white transition rounded-full shadow flex items-center">
+                    <img src="https://i.imgur.com/fqDGYLp.gif" alt="Random" class="mr-2" style="height: 30px; width: auto;"/> Random
+                </a>
+                
+                <a href="#" id="next-link" class="bg-primary text-black px-4 py-2 hover:bg-white transition rounded-full shadow flex items-center">
+                    Next <img src="https://i.imgur.com/BSvN1oL.png" alt="Next" class="ml-2" style="height: 30px; width: auto;"/>
+                </a>
+            </div>
+        </nav>
+        
+        <!-- Current Site Info -->
+        <article id="current-site-container" aria-labelledby="current-site-title" class="bg-green-50 bg-opacity-90 border-2 border-primary p-6 mb-8 pixel-border max-w-3xl mx-auto rounded-xl shadow-lg">
+            <h2 id="current-site-title" class="text-3xl text-primary mb-4 flex items-center">
+                <span id="current-site-icon-left" class="mr-2">🐌</span> <span id="current-site-name"></span> <span id="current-site-icon-right" class="ml-2">🐌</span>
+            </h2>
+            
+            <div class="mb-4 p-4 bg-white bg-opacity-70 border border-primary rounded-lg">
+                <p id="current-site-description" class="text-xl mb-2"></p>
+                <p class="text-primary">
+                    <span class="text-green-600">👑 Owner:</span> <span id="current-site-owner"></span>
+                </p>
+                <p class="text-primary">
+                    <span class="text-green-600">💰 CA:</span> <a id="current-site-ca" href="#" target="_blank" rel="noopener" class="text-primary hover:text-green-700">View on Birdeye</a>
+                </p>
+                <!-- Video section - will only be shown for sites with videos -->
+                <div id="current-site-video-container" class="mt-4" style="display: none;">
+                    <video id="current-site-video" controls class="w-full rounded-lg border border-primary" style="max-height: 300px;">
+                        <source src="" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+            </div>
+            
+            <div class="text-center">
+                <a id="current-site-url" href="#" target="_blank" rel="noopener"
+                   class="inline-block bg-primary text-black px-6 py-3 text-xl hover:bg-white transition rounded-full shadow-lg flex items-center justify-center">
+                    <span>Visit Site</span> <img src="https://i.imgur.com/r5luGVS.gif" alt="Visit" class="ml-2" style="height: 30px; width: auto;"/>
+                </a>
+            </div>
+        </article>
+        
+        <!-- Video for BRSD site -->
+        <div id="current-site-video-container" class="bg-green-50 bg-opacity-90 border-2 border-primary p-6 mb-8 pixel-border max-w-3xl mx-auto rounded-xl shadow-lg" style="display: none;">
+            <h2 class="text-3xl text-primary mb-4">Site Video</h2>
+            <video id="current-site-video" controls class="w-full rounded-lg shadow-md">
+                <source src="" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+        
+
+        
+        <!-- Jupiter swap button -->
+        <div id="current-site-swap-container" class="text-center mb-8" style="display: none;">
+            <a id="jupiter-direct-link" href="#" target="_blank" rel="noopener" class="bg-primary text-black px-6 py-3 text-xl hover:bg-white transition rounded-full shadow-lg flex items-center justify-center mx-auto inline-flex">
+                <span>Swap on Jupiter</span> <img src="https://i.imgur.com/UI2wRoe.gif" alt="Swap" class="ml-2" style="height: 30px; width: auto;"/>
+            </a>
+        </div>
+        
+        <!-- All Sites List -->
+        <section aria-labelledby="all-sites-title" class="bg-green-50 bg-opacity-90 border-2 border-primary p-6 pixel-border max-w-3xl mx-auto rounded-xl shadow-lg">
+            <h2 id="all-sites-title" class="text-3xl text-primary mb-4 flex items-center">
+                <img src="https://i.imgur.com/UI2wRoe.gif" alt="Leaf" class="mr-2" style="height: 30px; width: auto;"/> All Webring Sites <img src="https://i.imgur.com/UI2wRoe.gif" alt="Leaf" class="ml-2" style="height: 30px; width: auto;"/>
+            </h2>
+            
+            <div id="all-sites-container" class="grid gap-4">
+                <!-- Sites will be dynamically added here -->
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-green-100 bg-opacity-80 border-t-4 border-primary py-6 mt-8" style="background-image: url('https://i.imgur.com/Ck3oPFP.png'); background-size: cover; background-position: center;" role="contentinfo">
+        <div class="container mx-auto px-4 text-center">
+            <!-- Footer content -->
+            <p class="text-white font-bold text-shadow flex items-center justify-center">© 2025 Slug Webring <img src="https://i.imgur.com/UI2wRoe.gif" alt="Leaf" class="ml-2" style="height: 24px; width: auto;"/></p>
+            <div class="mt-4">
+                <a href="?id=1" class="text-white underline mr-4">BRSD</a>
+                <a href="?id=2" class="text-white underline mr-4">MOIST</a>
+                <a href="?id=3" class="text-white underline">EGG</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript to handle webring functionality -->
+    <script type="module">
+        import { getAllSites, getSiteById, getNextSite, getPrevSite, getRandomSite } from './sites.js';
+
+        // Get URL parameters
+        function getUrlParam(param) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(param);
+        }
+
+        /**
+         * Initialize the webring with site data and navigation
+         */
+        function initWebring() {
+            const allSites = getAllSites();
+            let currentId = parseInt(getUrlParam('id'));
+            
+            // If no ID is specified or invalid, show the first site
+            if (isNaN(currentId) && allSites.length > 0) {
+                currentId = allSites[0].id;
+            }
+            
+            // Get site data
+            const currentSite = getSiteById(currentId);
+            const nextSite = getNextSite(currentId);
+            const prevSite = getPrevSite(currentId);
+            const randomSite = getRandomSite(currentId);
+            
+            // Update navigation links
+            if (prevSite) {
+                document.getElementById('prev-link').href = `?id=${prevSite.id}`;
+            }
+            
+            if (randomSite) {
+                document.getElementById('random-link').href = `?id=${randomSite.id}`;
+            }
+            
+            if (nextSite) {
+                document.getElementById('next-link').href = `?id=${nextSite.id}`;
+            }
+            
+            // Update current site info
+            if (currentSite) {
+                document.getElementById('current-site-name').textContent = currentSite.name;
+                document.getElementById('current-site-description').textContent = currentSite.description;
+                document.getElementById('current-site-owner').textContent = currentSite.owner;
+                document.getElementById('current-site-ca').href = currentSite.caLink;
+                document.getElementById('current-site-url').href = currentSite.url;
+                
+                // Set the custom icons for the site
+                document.getElementById('current-site-icon-left').innerHTML = currentSite.icon;
+                document.getElementById('current-site-icon-right').innerHTML = currentSite.icon;
+                
+                /**
+                 * Updates the media display elements based on current site data
+                 * Handles both video and swap button visibility
+                 */
+                const updateMediaDisplay = () => {
+                    // Handle video display
+                    const videoContainer = document.getElementById('current-site-video-container');
+                    const videoElement = document.getElementById('current-site-video');
+                    const videoSource = videoElement.querySelector('source');
+                    
+                    // Show/hide video based on site data
+                    if (currentSite.video) {
+                        videoSource.src = currentSite.video;
+                        videoElement.load(); // Reload the video with the new source
+                        videoContainer.style.display = 'block';
+                    } else {
+                        videoContainer.style.display = 'none';
+                    }
+                    
+                    // Handle Jupiter swap button
+                    const swapContainer = document.getElementById('current-site-swap-container');
+                    const jupiterDirectLink = document.getElementById('jupiter-direct-link');
+                    
+                    // Show/hide swap button based on site data
+                    if (currentSite.swapUrl) {
+                        jupiterDirectLink.href = currentSite.swapUrl;
+                        swapContainer.style.display = 'block';
+                    } else {
+                        swapContainer.style.display = 'none';
+                    }
+                };
+                
+                // Update media display
+                updateMediaDisplay();
+                document.getElementById('current-site-container').style.display = 'block';
+            } else {
+                document.getElementById('current-site-container').style.display = 'none';
+            }
+            
+            /**
+             * Renders the list of all sites in the webring
+             * Uses document fragment for better performance
+             */
+            const renderSitesList = () => {
+                const allSitesContainer = document.getElementById('all-sites-container');
+                allSitesContainer.innerHTML = '';
+                
+                // Create a document fragment for better performance
+                const fragment = document.createDocumentFragment();
+                
+                // Iterate through all sites and create elements
+                allSites.forEach(site => {
+                    // Create site element with conditional highlighting for current site
+                    const siteElement = document.createElement('div');
+                    siteElement.className = `p-3 border border-primary rounded-lg ${currentId === site.id ? 'bg-primary bg-opacity-20' : 'bg-white bg-opacity-70'}`;
+                    
+                    // Populate with site details
+                    siteElement.innerHTML = `
+                        <a href="?id=${site.id}" class="text-xl text-primary hover:text-green-700 flex items-center">
+                            <span class="mr-2">${site.icon}</span> ${site.name}
+                        </a>
+                        <p class="text-sm mt-1">${site.description}</p>
+                        <div class="flex justify-between items-center mt-2">
+                            <span class="text-xs">Owner: ${site.owner}</span>
+                            <span class="text-xs">Joined: ${site.joined}</span>
+                        </div>
+                    `;
+                    
+                    // Add to fragment
+                    fragment.appendChild(siteElement);
+                });
+                
+                // Add all elements to DOM at once (more efficient)
+                allSitesContainer.appendChild(fragment);
+            };
+            
+            // Render the sites list
+            renderSitesList();
+        }
+        
+        // Initialize the webring when the page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            try {
+                initWebring();
+            } catch (error) {
+                console.error('Error initializing webring:', error);
+            }
+        });
+    </script>
+</body>
+</html>
