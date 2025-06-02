@@ -10,7 +10,7 @@ const sites = [
     {
         id: 1,
         name: 'Big Rick Sucks Dick $BRSD',
-        url: 'https://example.com/neotokyo',
+        url: 'https://monkeydmuf.github.io/SlugRing/?id=1',
         description: 'BICK RICK SUUUUUUCKS DIIIIIIIIIIIIIIIIIIIICK',
         owner: 'RICK',
         joined: '2025-01-15',
@@ -33,7 +33,7 @@ const sites = [
     {
         id: 3,
         name: 'EGG $EGG ',
-        url: 'https://example.com/retrogaming',
+        url: 'https://monkeydmuf.github.io/SlugRing/?id=3',
         description: 'Energetic Greetings, Glorious Sunlit Slugs!',
         owner: 'HOMESTEAD',
         joined: '2025-03-10',
